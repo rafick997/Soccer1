@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Football.Models.Team1>
+
+@{
+    ViewBag.Title = "Index";
+    <h2>Football clubs </h2>
+}
+
+@using Football.Models 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coach)
+        </th>
+        <th>
+            @Html.DisplayText("String")
+        </th>
+      
+                <th>
+            @Html.DisplayName("Actions")
+                </th>
+            
+     
+      
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coach)
+        </td>
+        <td>
+        
+        </td>
+        <td>
+            @{
+                if (this.User.IsInRole("Admin")) {
+                    @Html.ActionLink("Edit", "Edit", new { teamId = item.ID })
+                    @Html.ActionLink("Details", "Details", new { teamId = item.ID }) 
+                    @Html.ActionLink("Delete", "Delete", new { teamId = item.ID })
+                    @Html.ActionLink("Players", "PlayerOfTeam", "Player", new { teamId = item.ID }, null)
+                    }
+            else if (this.User.IsInRole("User")){
+            @Html.ActionLink("Details", "Details", new { teamId = item.ID })
+            @Html.ActionLink("Players", "PlayerOfTeam", "Player", new { teamId = item.ID }, null)
+                }
+                else
+                {   @Html.ActionLink("Players", "PlayerOfTeam", "Player", new { teamId = item.ID }, null)}
+            } 
+
+        </td>
+    </tr>
+                }
+
+</table>

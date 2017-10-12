@@ -1,0 +1,42 @@
+﻿@model Football.Models.Player
+<br />
+
+
+
+<table border="1" , width="300" style="font-family:Arial ">
+   
+
+     <tr>
+        <td>
+            <img src="@Url.Content(Model.Photo)" alt="Model.AlternativeText" width="130" height="150" />
+        </td>
+        <td>
+            <table width="220">
+                <tr>
+                    <td><b> Name:</b></td>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <td><b> Age</b></td>
+                    <td>@Model.Age:</td>
+                </tr>
+                <tr>
+                    <td><b> Position:</b></td>
+                    <td>@Model.Position</td>
+                </tr>
+                <tr>
+                    <td><b> Country:</b></td>
+                    <td>@Model.Country</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { playerId = Model.ID }, null)
+                        @Html.ActionLink("Edit", "Edit", new { playerId = Model.ID }, null)
+                        @Html.ActionLink("Delete player", "Delete", new { playerId = Model.ID, teamId = Model.TeamID })
+                    </td>
+</tr>
+            </table>
+        </td>
+    </tr>
+</table>
+

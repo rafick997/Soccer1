@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Football.Models.Player>
+@using Football.Models;
+@{
+    ViewBag.Title = "playerOfTeam";
+}
+<p>
+    @Html.ActionLink("Create New", "CreateForTeam", new { teamId = ViewBag.teamId })
+</p>
+@foreach (var item in Model)
+{
+    @Html.Partial("_Player", item)
+}

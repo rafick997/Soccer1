@@ -1,0 +1,107 @@
+﻿@using Football.CustomHtmlHelpers;
+@model Football.Models.Player
+
+@{
+    ViewBag.Title = "Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        img {
+            position: absolute;
+            left: 600px;
+            top: 152px;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Details</h2>
+    <div style="font-family:Arial">
+            <div>
+                <h4>Player</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Photo)
+                    </dt>
+                    <dd >
+                        <img src="@Url.Content(@Model.Photo)", width="140" height="170" />
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Age)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TeamID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TeamID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BirthDate, "{0:dd-MM-yyyy}")
+                    </dd>
+
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Position)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Position)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Height)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Height)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Weight)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Weight)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Country)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+   
+</body>
+</html>

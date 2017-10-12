@@ -1,0 +1,125 @@
+﻿<!DOCTYPE HTML>
+<!--
+    Stellar by HTML5 UP
+    html5up.net |
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Football</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    @Styles.Render("~/Content/css")
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <span class="logo"><img src="images/logo.svg" alt="" /></span>
+            <h1>Football, more than sport</h1>
+            <p>
+                Just start<br />
+                built by rafal.
+            </p>
+        </header>
+
+        <nav id="nav">
+            <ul>
+
+                <li>@Html.ActionLink("Teams", "Index", "Team1")</li>
+                <li>@Html.ActionLink("Players", "Index", "Player")</li>
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                        <li>
+                            @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                    }
+                }
+                else
+                {
+
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+                }
+            </ul>
+        </nav>
+        <div id="main">
+            <section id="intro" class="main">
+
+                <div class="spotlight">
+                    <div class="content">
+                        <p>
+                            @RenderBody()
+                        </p>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="cta" class="main special">
+                <header class="major">
+                    <h2>Lets make your first soccer bets</h2>
+                    <p>
+                        Most Popular Soccer Bets
+                    </p>
+                </header>
+                <footer class="major">
+                    <ul class="actions">
+                        <li><a href="https://lvbet.pl/pl" class="button special">Lets start win money in football</a></li>
+                        <li><a href="https://www.flashscore.pl/" class="button">Matchs plan and results</a></li>
+                    </ul>
+                </footer>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <h2>Football Web Service</h2>
+                <p>Servis was created by rafal, to get a good practise and skills of programming in C# at platform .NET</p>
+            </section>
+            <section>
+                <h2>Contact with me</h2>
+                <dl class="alt">
+                    <dt>Address</dt>
+                    <dd>Poznanska 2B &bull; Rzeszow city, 35-084 &bull; Poland</dd>
+                    <dt>Phone</dt>
+                    <dd>(+48) 519825694</dd>
+                    <dd>(+48) 733761434</dd>
+                    <dt>Email</dt>
+                    <dd><a href="#">rafal.kuc007@gmail.com</a></dd>
+                </dl>
+
+            </section>
+            <p class="copyright">&copy; Web service created by rafal</a>.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
