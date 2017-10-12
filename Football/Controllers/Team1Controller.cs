@@ -20,7 +20,7 @@ namespace Football.Controllers
             { string username = User.Identity.Name;
                 ViewBag.User = username; }
 
-         
+         //zwrocic team
             return View(teams);
         }
         //EDIT
